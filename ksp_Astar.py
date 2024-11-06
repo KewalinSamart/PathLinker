@@ -180,7 +180,8 @@ def k_shortest_paths_yen(G, source, target, k=1, weight='weight', thresh=None, c
 
 
     # Compute the initial shortest path to initialize Yen's
-    shortestSourceDists, shortestSourcePaths = nx.single_source_dijkstra(net, source, target, weight=weight)
+    #shortestSourceDists, shortestSourcePaths = nx.single_source_dijkstra(net, source, target, weight=weight)
+    shortestSourceDists, shortestSourcePaths = nx.single_source_dijkstra(net, source, weight=weight)
 
     if target not in shortestSourcePaths:
         return []

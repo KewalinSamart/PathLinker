@@ -39,12 +39,20 @@ def modifyGraphForKSP_removeEdgesToSources(net, sources):
 
     # We will never use edges leaving a target or entering a source, since
     # we do not allow start/end nodes to be internal to any path.
+    '''
     for u,v in net.edges():
         if not net.has_edge(u, v):
             continue
         # remove edges coming into sources
         elif v in sources:
             net.remove_edge(u,v)
+    '''
+    # Make a list of edges to avoid modifying the graph while iterating
+    edges_to_check = list(net.edges())
+    
+    for u, v in edges_to_check:
+        if v in sources:
+            net.remove_edge(u, v)
     return
 
 
@@ -62,12 +70,20 @@ def modifyGraphForKSP_removeEdgesFromTargets(net, targets):
 
     # We will never use edges leaving a target or entering a source, since
     # we do not allow start/end nodes to be internal to any path.
+    '''
     for u,v in net.edges():
         if not net.has_edge(u, v):
             continue
         # remove edges leaving targets
         elif u in targets:
             net.remove_edge(u,v)
+    '''
+    # Collect edges to remove
+    edges_to_remove = [(u, v) for u, v in net.edges() if u in targets]
+
+    # Remove all collected edges at once
+    net.remove_edges_from(edges_to_remove)
+    
     return
 
 
@@ -94,10 +110,12 @@ def modifyGraphForKSP_addSuperSourceSink(net, sources, targets, weightForArtific
     # as shortest paths from "sources" to "targets".
     for s in sources:
         net.add_edge('source', s, weight=1)
-        net.edge['source'][s]['ksp_weight'] = weightForArtificialEdges
+        net.edges['source', s]['ksp_weight'] = weightForArtificialEdges
+
     for t in targets:
         net.add_edge(t, 'sink', weight=1)
-        net.edge[t]['sink']['ksp_weight'] = weightForArtificialEdges
+        net.edges[t, 'sink']['ksp_weight'] = weightForArtificialEdges
+
     return
 
 
@@ -186,9 +204,9 @@ def calculateFluxEdgeWeights(net, nodeWeights):
     # probability (or node score) for u, and d_u is the weighted outdegree of node u.
 
     # assign EdgeFlux scores to the edges
-    for u,v in net.edges():
-        w = nodeWeights[u] * net[u][v]['weight']/net.out_degree(u, 'weight')
-        net.edge[u][v]['ksp_weight'] = w
+    for u, v in net.edges():
+        w = nodeWeights[u] * net[u][v]['weight'] / net.out_degree(u, weight='weight')
+        net.edges[u, v]['ksp_weight'] = w
     return
 
 

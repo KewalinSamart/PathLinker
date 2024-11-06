@@ -8,6 +8,13 @@ import PathLinker as pl
 import ksp_Astar as ksp
 from PageRank import pagerank, writePageRankWeights
 
+# Print info about the network
+def graph_info(G):
+    info_str = f"Graph with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges\n"
+    for line in nx.generate_adjlist(G):
+        info_str += line + "\n"
+    return info_str
+
 def main(args):
     usage = '''
 PathLinker.py [options] NETWORK NODE_TYPES
@@ -101,8 +108,7 @@ REQUIRED arguments:
     with open(NETWORK_FILE, 'r') as network_file:
         net = pl.readNetworkFile(network_file, opts.PageRank)
 
-    # Print info about the network
-    print(nx.info(net))
+    print(graph_info(net))
 
     # Operate on only the largest connected component
     if(opts.largest_connected_component):
@@ -153,8 +159,8 @@ REQUIRED arguments:
         sys.exit('ERROR: No sources are in the network.')
     if len(targets)==0:
         sys.exit('ERROR: No targets are in the network.')
-    if len(sources.intersection(targets))>0:
-        sys.exit('ERROR: %d proteins are listed as both a source and target.' %(len(sources.intersection(targets))))
+    #if len(sources.intersection(targets))>0:
+        #sys.exit('ERROR: %d proteins are listed as both a source and target.' %(len(sources.intersection(targets))))
 
 
     # Run PageRank on the network
