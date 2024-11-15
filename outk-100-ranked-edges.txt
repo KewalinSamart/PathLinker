@@ -1,0 +1,2 @@
+#tail	head	KSP index	path cost
+TLR4	EPHA5	1	8.37900e-01

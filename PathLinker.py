@@ -163,8 +163,8 @@ def logTransformEdgeWeights(net):
     """
 
     for u,v in net.edges():
-        w = -log(max([0.000000001, net.edge[u][v]['ksp_weight']]))/log(10)
-        net.edge[u][v]['ksp_weight'] = w
+        w = -log(max([0.000000001, net[u][v]['ksp_weight']]))/log(10)
+        net[u][v]['ksp_weight'] = w
     return
 
 

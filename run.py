@@ -252,7 +252,7 @@ REQUIRED arguments:
             else:
                 edges.append( (t,h,{
                     'ksp_id':k, 
-                    'ksp_weight':net.edge[t][h]['ksp_weight'],
+                    'ksp_weight':net.edges[t,h]['ksp_weight'],
                     'path_cost': path[-1][1]}) )
 
         # Add all new, good edges from this path to the network
@@ -263,8 +263,8 @@ REQUIRED arguments:
         # not have 'ksp_id' attribute, meaning they were just added
         # from this path.
         for n in pathgraph.nodes():
-            if 'ksp_id' not in pathgraph.node[n]:
-                pathgraph.node[n]['ksp_id'] = k
+            if 'ksp_id' not in pathgraph.nodes[n]:
+                pathgraph.nodes[n]['ksp_id'] = k
 
 
     ## Write out the results to file    
