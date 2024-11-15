@@ -1,0 +1,22 @@
+#Node	Node type
+CXCL2	source
+HMGCR	source
+MMP1	source
+PTGS2	source
+S100A4	source
+TLR4	source
+VAV3	source
+MAPK4	target
+VIP	target
+G6PD	target
+HLA-DQB1	target
+BHLHE40	target
+CSF1	target
+JUND	target
+HSPA1A	target
+ATF3	target
+PAX2	target
+HTR4	target
+GLP1R	target
+TSC2	target
+HERC2	target

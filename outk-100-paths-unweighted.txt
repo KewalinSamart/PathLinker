@@ -1,0 +1,2 @@
+#KSP	path_length	path
+1	3.79256e-03	MMP1|TFPI
