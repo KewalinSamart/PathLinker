@@ -1,0 +1,3 @@
+#tail	head	KSP index	path cost
+TLR4	LATS2	1	7.01296e-01
+LATS2	APC	1	7.01296e-01

@@ -1,0 +1,3 @@
+#tail	head	KSP index	path cost
+TLR4	UBA52	1	7.08955e-01
+UBA52	G6PD	1	7.08955e-01

@@ -1,0 +1,3 @@
+#tail	head	KSP index	path cost
+TLR4	SMARCA2	1	7.20903e-01
+SMARCA2	GATA2	1	7.20903e-01

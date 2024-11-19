@@ -1,0 +1,15 @@
+Node	Node type
+CXCL2	source
+HMGCR	source
+MMP1	source
+PTGS2	source
+S100A4	source
+TLR4	source
+VAV3	source
+APC	target
+ATP1A1	target
+F2RL1	target
+HIF1A	target
+HTR4	target
+LINC00473	target
+SCAP	target
